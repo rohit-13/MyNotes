@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA4A38552A644CCE00047E31 /* PasswordSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4A38542A644CCE00047E31 /* PasswordSettingsViewController.swift */; };
 		AA57AF322A4AE2D10064D572 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57AF302A4AE2D10064D572 /* Note+CoreDataClass.swift */; };
 		AA57AF332A4AE2D10064D572 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA57AF312A4AE2D10064D572 /* Note+CoreDataProperties.swift */; };
+		AA5E2C782A59D3D70040F17C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5E2C772A59D3D70040F17C /* SettingsViewController.swift */; };
 		AA7AA2482A31F1190035B6C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA2472A31F1190035B6C9 /* AppDelegate.swift */; };
 		AA7AA24A2A31F1190035B6C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA2492A31F1190035B6C9 /* SceneDelegate.swift */; };
 		AA7AA24F2A31F1190035B6C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA7AA24D2A31F1190035B6C9 /* Main.storyboard */; };
@@ -20,11 +22,15 @@
 		AA7AA2672A31FA380035B6C9 /* ListNoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA2662A31FA380035B6C9 /* ListNoteTableViewCell.swift */; };
 		AA7AA26C2A3215500035B6C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA26B2A3215500035B6C9 /* Extensions.swift */; };
 		AA7AA2722A32539D0035B6C9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7AA2712A32539D0035B6C9 /* CoreDataManager.swift */; };
+		AAC937A82A5A9E28007E26F6 /* KeyChainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC937A72A5A9E28007E26F6 /* KeyChainHelper.swift */; };
+		AAC937AA2A5AB974007E26F6 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC937A92A5AB974007E26F6 /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA4A38542A644CCE00047E31 /* PasswordSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSettingsViewController.swift; sourceTree = "<group>"; };
 		AA57AF302A4AE2D10064D572 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AA57AF312A4AE2D10064D572 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AA5E2C772A59D3D70040F17C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA7AA2442A31F1190035B6C9 /* MyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA7AA2472A31F1190035B6C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA7AA2492A31F1190035B6C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +44,8 @@
 		AA7AA2662A31FA380035B6C9 /* ListNoteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNoteTableViewCell.swift; sourceTree = "<group>"; };
 		AA7AA26B2A3215500035B6C9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AA7AA2712A32539D0035B6C9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		AAC937A72A5A9E28007E26F6 /* KeyChainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainHelper.swift; sourceTree = "<group>"; };
+		AAC937A92A5AB974007E26F6 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA5E2C762A59D3950040F17C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				AA5E2C772A59D3D70040F17C /* SettingsViewController.swift */,
+				AA4A38542A644CCE00047E31 /* PasswordSettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		AA7AA23B2A31F1190035B6C9 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +103,7 @@
 		AA7AA25E2A31F2290035B6C9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AA5E2C762A59D3950040F17C /* Settings */,
 				AA7AA2632A31F2C00035B6C9 /* EditNote */,
 				AA7AA2602A31F2870035B6C9 /* ListNotes */,
 			);
@@ -124,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				AA7AA26B2A3215500035B6C9 /* Extensions.swift */,
+				AAC937A72A5A9E28007E26F6 /* KeyChainHelper.swift */,
+				AAC937A92A5AB974007E26F6 /* UserDefaults.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -201,11 +221,15 @@
 			files = (
 				AA7AA26C2A3215500035B6C9 /* Extensions.swift in Sources */,
 				AA7AA2622A31F2AB0035B6C9 /* ListNotesViewController.swift in Sources */,
+				AA5E2C782A59D3D70040F17C /* SettingsViewController.swift in Sources */,
+				AAC937A82A5A9E28007E26F6 /* KeyChainHelper.swift in Sources */,
+				AAC937AA2A5AB974007E26F6 /* UserDefaults.swift in Sources */,
 				AA7AA2482A31F1190035B6C9 /* AppDelegate.swift in Sources */,
 				AA7AA24A2A31F1190035B6C9 /* SceneDelegate.swift in Sources */,
 				AA7AA2652A31F2DD0035B6C9 /* EditNoteViewController.swift in Sources */,
 				AA7AA2522A31F1190035B6C9 /* MyNotes.xcdatamodeld in Sources */,
 				AA57AF322A4AE2D10064D572 /* Note+CoreDataClass.swift in Sources */,
+				AA4A38552A644CCE00047E31 /* PasswordSettingsViewController.swift in Sources */,
 				AA7AA2672A31FA380035B6C9 /* ListNoteTableViewCell.swift in Sources */,
 				AA7AA2722A32539D0035B6C9 /* CoreDataManager.swift in Sources */,
 				AA57AF332A4AE2D10064D572 /* Note+CoreDataProperties.swift in Sources */,

@@ -46,14 +46,19 @@ extension CoreDataManager {
         note.id = UUID()
         note.lastUpdated = Date()
         note.text = ""
+        note.isPrivateNote = false
         save()
         return note
     }
     
-    func fetchNotes(filter: String? = nil) -> [Note] {
+    func fetchNotes(filter: String? = nil, showPrivateNotes: Bool = false) -> [Note] {
         let request: NSFetchRequest<Note> = Note.fetchRequest()
         if let filter = filter {
             let predicate = NSPredicate(format: "text contains[cd] %@", filter)
+            request.predicate = predicate
+        }
+        if !showPrivateNotes {
+            let predicate = NSPredicate(format: "isPrivateNote = %d", showPrivateNotes)
             request.predicate = predicate
         }
         let sortDescriptor = NSSortDescriptor(keyPath: \Note.lastUpdated, ascending: false)

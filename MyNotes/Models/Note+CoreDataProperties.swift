@@ -19,6 +19,7 @@ extension Note {
     @NSManaged public var id: UUID!
     @NSManaged public var text: String!
     @NSManaged public var lastUpdated: Date!
+    @NSManaged public var isPrivateNote: Bool
 
 }
 

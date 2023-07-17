@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ListNotesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, EditNoteDelegate, UISearchBarDelegate {
+class ListNotesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchControllerDelegate, EditNoteDelegate, UISearchBarDelegate, SettingsViewControllerDelegate {
 
     @IBOutlet weak private var tableView: UITableView!
     @IBOutlet weak private var notesCountLabel: UILabel!
@@ -45,20 +45,38 @@ class ListNotesViewController: UIViewController, UITableViewDelegate, UITableVie
         fetchNotesFromStorage()
     }
     
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+    }
+    
     @IBAction func newNoteButtonClicked(_ sender: Any) {
         goToEditNote(createNote())
     }
     
+    @IBAction func settingsButtonTapped(_ sender: Any) {
+        if let settingsVC = storyboard?.instantiateViewController(identifier: "SettingsViewController") as? SettingsViewController {
+            settingsVC.delegate = self
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            navigationController?.pushViewController(settingsVC, animated: true)
+        }
+    }
+    
+    
     private func goToEditNote(_ note: Note) {
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        let controller = storyboard?.instantiateViewController(identifier: "EditNoteViewController") as! EditNoteViewController
-        controller.note = note
-        controller.delegate = self
-        navigationController?.pushViewController(controller, animated: true)
+        if let editNoteVC = storyboard?.instantiateViewController(identifier: "EditNoteViewController") as? EditNoteViewController {
+            editNoteVC.note = note
+            editNoteVC.delegate = self
+            self.navigationController?.navigationBar.prefersLargeTitles = false
+            navigationController?.pushViewController(editNoteVC, animated: true)
+        }
     }
     
     private func fetchNotesFromStorage() {
-        allNotes = CoreDataManager.shared.fetchNotes()
+        allNotes = CoreDataManager.shared.fetchNotes(showPrivateNotes: UserDefaults.standard.privateNotesEnabled ?? false)
     }
     
     private func deleteNoteFromStorage(_ note: Note) {
@@ -85,7 +103,7 @@ class ListNotesViewController: UIViewController, UITableViewDelegate, UITableVie
     func updateNotes(with note: Note) {
         note.lastUpdated = Date()
         CoreDataManager.shared.save()
-        allNotes = allNotes.sorted { $0.lastUpdated > $1.lastUpdated }
+        fetchNotesFromStorage()
         tableView.reloadData()
     }
     
@@ -134,5 +152,11 @@ class ListNotesViewController: UIViewController, UITableViewDelegate, UITableVie
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text, !query.isEmpty else { return }
         searchNotesFromStorage(query)
+    }
+    
+    // MARK: SettingsVC Delegate
+    func refreshNotes() {
+        fetchNotesFromStorage()
+        tableView.reloadData()
     }
 }
